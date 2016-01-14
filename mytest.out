@@ -1,0 +1,36 @@
+in           line 0 cols 0-0 is T_Identifier (truncated to )
+int          line 0 cols 0-0 is T_Int 
+a            line 0 cols 0-0 is T_Identifier (truncated to )
+;            line 0 cols 0-0 is T_FloatConstant (value = 0)
+void         line 0 cols 0-0 is T_Void 
+main         line 0 cols 0-0 is T_Identifier (truncated to )
+(            line 0 cols 0-0 is T_FloatConstant (value = 0)
+)            line 0 cols 0-0 is T_FloatConstant (value = 0)
+{            line 0 cols 0-0 is T_FloatConstant (value = 0)
+int          line 0 cols 0-0 is T_Int 
+b            line 0 cols 0-0 is T_Identifier (truncated to )
+;            line 0 cols 0-0 is T_FloatConstant (value = 0)
+int          line 0 cols 0-0 is T_Int 
+d            line 0 cols 0-0 is T_Identifier (truncated to )
+;            line 0 cols 0-0 is T_FloatConstant (value = 0)
+d            line 0 cols 0-0 is T_Identifier (truncated to )
+=            line 0 cols 0-0 is T_Equal 
+ 2           line 0 cols 0-0 is T_FloatConstant (value = 0)
++            line 0 cols 0-0 is T_FloatConstant (value = 0)
+ 3           line 0 cols 0-0 is T_FloatConstant (value = 0)
+*            line 0 cols 0-0 is T_FloatConstant (value = 0)
+ 4           line 0 cols 0-0 is T_FloatConstant (value = 0)
+-            line 0 cols 0-0 is T_FloatConstant (value = 0)
+ 6           line 0 cols 0-0 is T_FloatConstant (value = 0)
+;            line 0 cols 0-0 is T_FloatConstant (value = 0)
+b            line 0 cols 0-0 is T_Identifier (truncated to )
+=            line 0 cols 0-0 is T_Equal 
+ 3           line 0 cols 0-0 is T_FloatConstant (value = 0)
+;            line 0 cols 0-0 is T_FloatConstant (value = 0)
+a            line 0 cols 0-0 is T_Identifier (truncated to )
+=            line 0 cols 0-0 is T_Equal 
+b            line 0 cols 0-0 is T_Identifier (truncated to )
++            line 0 cols 0-0 is T_FloatConstant (value = 0)
+ 2           line 0 cols 0-0 is T_FloatConstant (value = 0)
+;            line 0 cols 0-0 is T_FloatConstant (value = 0)
+}            line 0 cols 0-0 is T_FloatConstant (value = 0)

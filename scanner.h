@@ -31,10 +31,10 @@ typedef enum {
     T_Identifier, T_StringConstant, T_IntConstant, T_FloatConstant,
     T_BoolConstant, T_Print, T_ReadInteger, T_ReadLine,
     T_Vec2, T_Vec3, T_Vec4, T_Mat2, T_Mat3, T_Mat4,
-    T_Ivec2, T_Ivec3, T_Ivec4, T_In, T_Oout, T_Inout, T_Layout, T_Uniform, 
+    T_Ivec2, T_Ivec3, T_Ivec4, T_In, T_Out, T_Inout, T_Layout, T_Uniform, 
     T_Const, T_Continue, T_Do, T_Switch,  T_Case, T_Default, T_True, T_False,
-    T_Bvec2, T_Bvec3, T_Bvec4, T_Uint, T_Uvec2, T_Uvec3, T_Uvec4, T_Struct, 
-    T_Inc, T_Dec, T_NumTokenTypes
+    T_Bvec2, T_Bvec3, T_Bvec4, T_Uint, T_Uvec2, T_Uvec3, T_Uvec4, T_Struct,
+    T_NumTokenTypes
 } TokenType;
 
  
@@ -55,7 +55,7 @@ static const char *gTokenNames[T_NumTokenTypes] = {
   "T_Mat3", "T_Mat4", "T_Ivec2", "T_Ivec3", "T_Tvec4", "T_In", "T_Out", "T_Inout", 
   "T_Layout", "T_Uniform", "T_Const", "T_Continue", "T_Do", "T_Switch", "T_Case", 
   "T_Default", "T_True", "T_False", "T_Bvec2", "T_Bvec3", "T_Bvec4", 
-  "T_Uint", "T_Uvec2","T_Uvec3","T_Uvec4", "T_Struct", "T_Inc", "T_Dec"
+  "T_Uint", "T_Uvec2","T_Uvec3","T_Uvec4", "T_Struct"
 };
 
  

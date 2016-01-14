@@ -104,6 +104,11 @@ static void DoBeforeEachAction();
 [_][a-zA-Z0-9][_a-zA-Z0-9]* |
 [a-zA-Z][_a-zA-Z0-9]*{1,31} 	{ return T_Identifier; }
 
+"switch"	{ return T_Switch; }
+"case"		{ return T_Case; }
+"in"		{ return T_In; }
+"out"		{ return T_Out;}
+
 
 %%
 /* The closing %% above marks the end of the Rules section and the beginning
