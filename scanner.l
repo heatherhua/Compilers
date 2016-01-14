@@ -72,7 +72,8 @@ static void DoBeforeEachAction();
   * %% markers which delimit the Rules section. 
   */  
 
-[ \t\n] 	{ }
+[ \t\n\r] 	{ }
+
 "void"		{ return T_Void; }
 "int"		{ return T_Int; }
 "float"		{ return T_Float; }
@@ -81,34 +82,66 @@ static void DoBeforeEachAction();
 "\[\]"		{ return T_Dims; }
 "<="		{ return T_LessEqual; }
 ">="		{ return T_GreaterEqual; }
-"="			{ return T_Equal; }
+"="			{ return '='; }
 "!="		{ return T_NotEqual; }
 "++"		{ return T_Inc; }
 "--"		{ return T_Dec; }
-"and"		{ return T_And; }
-"or"		{ return T_Or; }
+";"			{ return ';';}
+"+"			{ return '+';}
+"-"			{ return '-';}
+"("			{ return '('; }
+")"			{ return ')';}
+"]"			{ return ']';}
+"["			{ return '[';}
+"*"			{ return '*';}
+"/"			{ return '/';}
+"%"			{ return '%';}
+"<"			{ return '<';}
+">"			{ return '>';}
+"!"			{ return '!';}
+"."			{ return '.';}
+","			{ return ',';}
+"{"			{ return '{';}
+"}"			{ return '}';}
+"and" | "&&"{ return T_And; }
+"or" | "||"	{ return T_Or; }
 "while"		{ return T_While; }
 "for"		{ return T_For; }
 "if"		{ return T_If; }
 "else" 		{ return T_Else; }
 "return"	{ return T_Return; }
 "break"		{ return T_Break; }
-"true" 		{ return T_True; }
-"false"		{ return T_False; }
+"true" 		{ yylval.boolConstant = true; return T_BoolConstant;}
+"false"		{ yylval.boolConstant = false; return T_BoolConstant;}
+
 "\"*\""		{ return T_StringConstant; }
 
--?([0-9]{1,9}|1[0-9]{9}|2(0[0-9]{8}|1([0-3][0-9]{7}|4([0-6][0-9]{6}|7([0-3][0-9]{5}|4([0-7][0-9]{4}|8([0-2][0-9]{3}|3([0-5][0-9]{2}|6([0-3][0-9]|4[0-7])))))))))|^-2147483648 { return T_IntConstant; }
+((-?)[0-9][0-9]*f) |
+((-?)[0-9][0-9]*\.[0-9]*f) |
+((-?)[0-9]*\.[0-9][0-9]*(f?)) |	
+((-?)[0-9][0-9]*\.)	{ yylval.floatConstant = strtod(yytext, NULL); return T_FloatConstant; }
 
-[0-9]*.?[0-9]* 	{ return T_FloatConstant; }
-[_a-zA-Z][a-zA-Z0-9]* |
-[_][a-zA-Z0-9][_a-zA-Z0-9]* |
-[a-zA-Z][_a-zA-Z0-9]*{1,31} 	{ return T_Identifier; }
+-?([0-9]{1,9}|1[0-9]{9}|2(0[0-9]{8}|1([0-3][0-9]{7}|4([0-6][0-9]{6}|7([0-3][0-9]{5}|4([0-7][0-9]{4}|8([0-2][0-9]{3}|3([0-5][0-9]{2}|6([0-3][0-9]|4[0-7])))))))))|^-2147483648 { yylval.integerConstant = strtod(yytext, NULL); return T_IntConstant; }
 
+"do"		{ return T_Do; }
 "switch"	{ return T_Switch; }
 "case"		{ return T_Case; }
 "in"		{ return T_In; }
 "out"		{ return T_Out;}
+"default"	{ return T_Default; }
+"struct"	{ return T_Struct; }
+"uint"		{ return T_Uint; }
+"uniform"	{ return T_Uniform; }
+"const"		{ return T_Const;}
+"continue"	{ return T_Continue;}
 
+[_a-zA-Z][a-zA-Z0-9]* |
+[_][a-zA-Z0-9][_a-zA-Z0-9]* |
+[a-zA-Z][_a-zA-Z0-9]*{1,31} 	{ 
+									if(yyleng > 1023) {
+										printf("ERROR CAUGHT");
+									}
+									strncpy(yylval.identifier, yytext, MaxIdentLen); yylval.identifier[MaxIdentLen] = '\0'; return T_Identifier; }
 
 %%
 /* The closing %% above marks the end of the Rules section and the beginning

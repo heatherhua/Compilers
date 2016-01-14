@@ -1,36 +1,47 @@
-in           line 0 cols 0-0 is T_Identifier (truncated to )
-int          line 0 cols 0-0 is T_Int 
-a            line 0 cols 0-0 is T_Identifier (truncated to )
-;            line 0 cols 0-0 is T_FloatConstant (value = 0)
-void         line 0 cols 0-0 is T_Void 
-main         line 0 cols 0-0 is T_Identifier (truncated to )
-(            line 0 cols 0-0 is T_FloatConstant (value = 0)
-)            line 0 cols 0-0 is T_FloatConstant (value = 0)
-{            line 0 cols 0-0 is T_FloatConstant (value = 0)
-int          line 0 cols 0-0 is T_Int 
-b            line 0 cols 0-0 is T_Identifier (truncated to )
-;            line 0 cols 0-0 is T_FloatConstant (value = 0)
-int          line 0 cols 0-0 is T_Int 
-d            line 0 cols 0-0 is T_Identifier (truncated to )
-;            line 0 cols 0-0 is T_FloatConstant (value = 0)
-d            line 0 cols 0-0 is T_Identifier (truncated to )
-=            line 0 cols 0-0 is T_Equal 
- 2           line 0 cols 0-0 is T_FloatConstant (value = 0)
-+            line 0 cols 0-0 is T_FloatConstant (value = 0)
- 3           line 0 cols 0-0 is T_FloatConstant (value = 0)
-*            line 0 cols 0-0 is T_FloatConstant (value = 0)
- 4           line 0 cols 0-0 is T_FloatConstant (value = 0)
--            line 0 cols 0-0 is T_FloatConstant (value = 0)
- 6           line 0 cols 0-0 is T_FloatConstant (value = 0)
-;            line 0 cols 0-0 is T_FloatConstant (value = 0)
-b            line 0 cols 0-0 is T_Identifier (truncated to )
-=            line 0 cols 0-0 is T_Equal 
- 3           line 0 cols 0-0 is T_FloatConstant (value = 0)
-;            line 0 cols 0-0 is T_FloatConstant (value = 0)
-a            line 0 cols 0-0 is T_Identifier (truncated to )
-=            line 0 cols 0-0 is T_Equal 
-b            line 0 cols 0-0 is T_Identifier (truncated to )
-+            line 0 cols 0-0 is T_FloatConstant (value = 0)
- 2           line 0 cols 0-0 is T_FloatConstant (value = 0)
-;            line 0 cols 0-0 is T_FloatConstant (value = 0)
-}            line 0 cols 0-0 is T_FloatConstant (value = 0)
+/            line 0 cols 0-0 is '/' 
+*            line 0 cols 0-0 is '*' 
+float        line 0 cols 0-0 is T_Float 
+float        line 0 cols 0-0 is T_Float 
+x            line 0 cols 0-0 is T_Identifier 
+;            line 0 cols 0-0 is ';' 
+float        line 0 cols 0-0 is T_Float 
+y            line 0 cols 0-0 is T_Identifier 
+=            line 0 cols 0-0 is '=' 
+1.0          line 0 cols 0-0 is T_FloatConstant (value = 1)
+;            line 0 cols 0-0 is ';' 
+float        line 0 cols 0-0 is T_Float 
+z            line 0 cols 0-0 is T_Identifier 
+=            line 0 cols 0-0 is '=' 
+1.5f         line 0 cols 0-0 is T_FloatConstant (value = 1.5)
+;            line 0 cols 0-0 is ';' 
+.            line 0 cols 0-0 is '.' 
+f            line 0 cols 0-0 is T_Identifier 
+f            line 0 cols 0-0 is T_Identifier 
+42.0         line 0 cols 0-0 is T_FloatConstant (value = 42)
+42f          line 0 cols 0-0 is T_FloatConstant (value = 42)
+42           line 0 cols 0-0 is T_IntConstant (value = 42)
+42.          line 0 cols 0-0 is T_FloatConstant (value = 42)
+42.0f        line 0 cols 0-0 is T_FloatConstant (value = 42)
+42.f         line 0 cols 0-0 is T_FloatConstant (value = 42)
+.42          line 0 cols 0-0 is T_FloatConstant (value = 0.42)
+.42f         line 0 cols 0-0 is T_FloatConstant (value = 0.42)
+*            line 0 cols 0-0 is '*' 
+/            line 0 cols 0-0 is '/' 
+-            line 0 cols 0-0 is '-' 
+.            line 0 cols 0-0 is '.' 
+f            line 0 cols 0-0 is T_Identifier 
+-            line 0 cols 0-0 is '-' 
+f            line 0 cols 0-0 is T_Identifier 
+-42.0        line 0 cols 0-0 is T_FloatConstant (value = -42)
+-42f         line 0 cols 0-0 is T_FloatConstant (value = -42)
+-42          line 0 cols 0-0 is T_IntConstant (value = -42)
+-42.         line 0 cols 0-0 is T_FloatConstant (value = -42)
+-42.0f       line 0 cols 0-0 is T_FloatConstant (value = -42)
+-42.f        line 0 cols 0-0 is T_FloatConstant (value = -42)
+-.42         line 0 cols 0-0 is T_FloatConstant (value = -0.42)
+-.42f        line 0 cols 0-0 is T_FloatConstant (value = -0.42)
+-235928235   line 0 cols 0-0 is T_IntConstant (value = -235928235)
+7977         line 0 cols 0-0 is T_IntConstant (value = 7977)
+0            line 0 cols 0-0 is T_IntConstant (value = 0)
+43336        line 0 cols 0-0 is T_IntConstant (value = 43336)
+-42          line 0 cols 0-0 is T_IntConstant (value = -42)
