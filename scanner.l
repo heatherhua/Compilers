@@ -81,8 +81,10 @@ static void DoBeforeEachAction();
 "\[\]"		{ return T_Dims; }
 "<="		{ return T_LessEqual; }
 ">="		{ return T_GreaterEqual; }
-"="		{ return T_Equal; }
+"="			{ return T_Equal; }
 "!="		{ return T_NotEqual; }
+"++"		{ return T_Inc; }
+"--"		{ return T_Dec; }
 "and"		{ return T_And; }
 "or"		{ return T_Or; }
 "while"		{ return T_While; }
@@ -93,14 +95,14 @@ static void DoBeforeEachAction();
 "break"		{ return T_Break; }
 "true" 		{ return T_True; }
 "false"		{ return T_False; }
-[_a-zA-Z][a-zA-Z0-9]* |
-[_][a-zA-Z0-9][_a-zA-Z0-9]* |
-[a-zA-Z][_a-zA-Z0-9]*{1,31} 	{ return T_Identifier; }
 "\"*\""		{ return T_StringConstant; }
 
 -?([0-9]{1,9}|1[0-9]{9}|2(0[0-9]{8}|1([0-3][0-9]{7}|4([0-6][0-9]{6}|7([0-3][0-9]{5}|4([0-7][0-9]{4}|8([0-2][0-9]{3}|3([0-5][0-9]{2}|6([0-3][0-9]|4[0-7])))))))))|^-2147483648 { return T_IntConstant; }
 
 [0-9]*.?[0-9]* 	{ return T_FloatConstant; }
+[_a-zA-Z][a-zA-Z0-9]* |
+[_][a-zA-Z0-9][_a-zA-Z0-9]* |
+[a-zA-Z][_a-zA-Z0-9]*{1,31} 	{ return T_Identifier; }
 
 
 %%
