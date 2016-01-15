@@ -1,10 +1,12 @@
-/* float
+float
 
 float x;
 
 float y = 1.0;
 
 float z = 1.5f;
+
+tab		tab	
 
 .f
 f
@@ -17,8 +19,6 @@ f
 42.f
 .42
 .42f
-
-*/
 
 -.f
 -f

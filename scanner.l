@@ -72,8 +72,9 @@ static void DoBeforeEachAction();
   * %% markers which delimit the Rules section. 
   */  
 
-[ \t\n\r] 	{ }
-
+[\r] 	{ }
+[\t]		{ yylloc.last_column = yylloc.first_column + 7;}
+[\n] 		{ yylloc.first_line++; yylloc.first_column = 1;}
 "void"		{ return T_Void; }
 "int"		{ return T_Int; }
 "float"		{ return T_Float; }
@@ -139,9 +140,13 @@ static void DoBeforeEachAction();
 [_][a-zA-Z0-9][_a-zA-Z0-9]* |
 [a-zA-Z][_a-zA-Z0-9]*{1,31} 	{ 
 									if(yyleng > 1023) {
-										printf("ERROR CAUGHT");
+										ReportError::LongIdentifier(&yylloc, yytext);
+
+									} else {
+										strncpy(yylval.identifier, yytext, MaxIdentLen); yylval.identifier[MaxIdentLen] = '\0'; 
+										return T_Identifier;
 									}
-									strncpy(yylval.identifier, yytext, MaxIdentLen); yylval.identifier[MaxIdentLen] = '\0'; return T_Identifier; }
+								}
 
 %%
 /* The closing %% above marks the end of the Rules section and the beginning
@@ -167,6 +172,9 @@ void InitScanner()
 {
     PrintDebug("lex", "Initializing scanner");
     yy_flex_debug = false;
+
+    yylloc.first_line = 1;
+    yylloc.first_column = 1;
 }
 
 
@@ -177,4 +185,5 @@ void InitScanner()
  */
 static void DoBeforeEachAction()
 {
+	yylloc.last_column = yylloc.first_column + yyleng - 1;
 }

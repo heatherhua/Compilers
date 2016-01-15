@@ -1,47 +1,8 @@
-/            line 0 cols 0-0 is '/' 
-*            line 0 cols 0-0 is '*' 
-float        line 0 cols 0-0 is T_Float 
-float        line 0 cols 0-0 is T_Float 
-x            line 0 cols 0-0 is T_Identifier 
-;            line 0 cols 0-0 is ';' 
-float        line 0 cols 0-0 is T_Float 
-y            line 0 cols 0-0 is T_Identifier 
-=            line 0 cols 0-0 is '=' 
-1.0          line 0 cols 0-0 is T_FloatConstant (value = 1)
-;            line 0 cols 0-0 is ';' 
-float        line 0 cols 0-0 is T_Float 
-z            line 0 cols 0-0 is T_Identifier 
-=            line 0 cols 0-0 is '=' 
-1.5f         line 0 cols 0-0 is T_FloatConstant (value = 1.5)
-;            line 0 cols 0-0 is ';' 
-.            line 0 cols 0-0 is '.' 
-f            line 0 cols 0-0 is T_Identifier 
-f            line 0 cols 0-0 is T_Identifier 
-42.0         line 0 cols 0-0 is T_FloatConstant (value = 42)
-42f          line 0 cols 0-0 is T_FloatConstant (value = 42)
-42           line 0 cols 0-0 is T_IntConstant (value = 42)
-42.          line 0 cols 0-0 is T_FloatConstant (value = 42)
-42.0f        line 0 cols 0-0 is T_FloatConstant (value = 42)
-42.f         line 0 cols 0-0 is T_FloatConstant (value = 42)
-.42          line 0 cols 0-0 is T_FloatConstant (value = 0.42)
-.42f         line 0 cols 0-0 is T_FloatConstant (value = 0.42)
-*            line 0 cols 0-0 is '*' 
-/            line 0 cols 0-0 is '/' 
--            line 0 cols 0-0 is '-' 
-.            line 0 cols 0-0 is '.' 
-f            line 0 cols 0-0 is T_Identifier 
--            line 0 cols 0-0 is '-' 
-f            line 0 cols 0-0 is T_Identifier 
--42.0        line 0 cols 0-0 is T_FloatConstant (value = -42)
--42f         line 0 cols 0-0 is T_FloatConstant (value = -42)
--42          line 0 cols 0-0 is T_IntConstant (value = -42)
--42.         line 0 cols 0-0 is T_FloatConstant (value = -42)
--42.0f       line 0 cols 0-0 is T_FloatConstant (value = -42)
--42.f        line 0 cols 0-0 is T_FloatConstant (value = -42)
--.42         line 0 cols 0-0 is T_FloatConstant (value = -0.42)
--.42f        line 0 cols 0-0 is T_FloatConstant (value = -0.42)
--235928235   line 0 cols 0-0 is T_IntConstant (value = -235928235)
-7977         line 0 cols 0-0 is T_IntConstant (value = 7977)
-0            line 0 cols 0-0 is T_IntConstant (value = 0)
-43336        line 0 cols 0-0 is T_IntConstant (value = 43336)
--42          line 0 cols 0-0 is T_IntConstant (value = -42)
+
+*** Error line 1.
+*** Identifier too long: "t111111111111111111111111111111111111111122222222222222222222222222222222222222223333333333333333333333333333333333333333333333333333333333333333333333555555555555555555555555555555555555555555999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999lllllllllllllllllllllllaaskdfllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllldkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrruuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuussssssssssssssssssssssssssssssssssssssssssssssooooooooooooooooooooooooooooooooooooooooooooiwwwwwwwwwwwwwww"
+
+textShorterThan1023CharsButLongerThan31 line 2 cols 1-39 is T_Identifier (truncated to textShorterThan1023CharsButLong)
+is           line 3 cols 1-2 is T_Identifier 
+fine         line 4 cols 1-4 is T_Identifier 
+t1234567890123456789012345abcdef line 5 cols 1-32 is T_Identifier (truncated to t1234567890123456789012345abcde)
