@@ -69,15 +69,15 @@ static void DoBeforeEachAction();
 %x comment
 %%             /* BEGIN RULES SECTION */
 
+ /* All patterns and actions should be placed between the start and stop
+  * %% markers which delimit the Rules section. 
+  */ 
 "/*"         BEGIN(comment);
 
 <comment>[^*\n]*        /* eat anything that's not a '*' */
 <comment>"*"+[^*/\n]*   /* eat up '*'s not followed by '/'s */
 <comment>\n             ++yylloc.first_line;
-<comment>"*"+"/"        BEGIN(INITIAL);
- /* All patterns and actions should be placed between the start and stop
-  * %% markers which delimit the Rules section. 
-  */  
+<comment>"*"+"/"        BEGIN(INITIAL); 
 
 
 
