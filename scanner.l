@@ -46,6 +46,7 @@ struct yyltype yylloc; // manually dclared for pp1, later Yacc provides
 static void DoBeforeEachAction(); 
 #define YY_USER_ACTION DoBeforeEachAction();
 
+
 %}
 
  /* The section before the first %% is the Definitions section of the lex
@@ -72,9 +73,10 @@ static void DoBeforeEachAction();
   * %% markers which delimit the Rules section. 
   */  
 
-[\r] 	{ }
-[\t]		{ yylloc.last_column = yylloc.first_column + 7;}
-[\n] 		{ yylloc.first_line++; yylloc.first_column = 1;}
+[ ]			{ }
+[\t]		{ yylloc.first_column = yylloc.last_column + 8; yylloc.last_column += 8; }
+[\n] 		{ yylloc.first_line++; yylloc.first_column = 1; yylloc.last_column = 1;}
+[\r] 		{ }
 "void"		{ return T_Void; }
 "int"		{ return T_Int; }
 "float"		{ return T_Float; }
@@ -112,8 +114,8 @@ static void DoBeforeEachAction();
 "else" 		{ return T_Else; }
 "return"	{ return T_Return; }
 "break"		{ return T_Break; }
-"true" 		{ yylval.boolConstant = true; return T_BoolConstant;}
-"false"		{ yylval.boolConstant = false; return T_BoolConstant;}
+"true" 		{ yylloc.last_column = yylloc.first_column + yyleng - 1; yylval.boolConstant = true; return T_BoolConstant;}
+"false"		{ yylloc.last_column = yylloc.first_column + yyleng - 1; yylval.boolConstant = false; return T_BoolConstant;}
 
 "\"*\""		{ return T_StringConstant; }
 
@@ -141,8 +143,9 @@ static void DoBeforeEachAction();
 [a-zA-Z][_a-zA-Z0-9]*{1,31} 	{ 
 									if(yyleng > 1023) {
 										ReportError::LongIdentifier(&yylloc, yytext);
-
 									} else {
+										yylloc.first_column++;
+										yylloc.last_column = yylloc.first_column + yyleng - 1;
 										strncpy(yylval.identifier, yytext, MaxIdentLen); yylval.identifier[MaxIdentLen] = '\0'; 
 										return T_Identifier;
 									}
@@ -174,7 +177,9 @@ void InitScanner()
     yy_flex_debug = false;
 
     yylloc.first_line = 1;
-    yylloc.first_column = 1;
+    // yylloc.first_column = 1;
+    // yylloc.last_column = 1;
+    // yylloc.last_column = 1;
 }
 
 
@@ -185,5 +190,6 @@ void InitScanner()
  */
 static void DoBeforeEachAction()
 {
-	yylloc.last_column = yylloc.first_column + yyleng - 1;
+		// yylloc.last_column = yylloc.first_column + yyleng - 1;
+	
 }
