@@ -783,9 +783,9 @@ static yyconst flex_int16_t yy_rule_linenum[64] =
        86,   87,   88,   89,   90,   91,   92,   93,   94,   95,
        96,   97,   98,   99,  100,  101,  102,  103,  104,  105,
       106,  107,  108,  109,  110,  111,  112,  113,  114,  115,
-      116,  117,  118,  120,  122,  123,  124,  125,  127,  129,
-      130,  131,  132,  133,  134,  135,  136,  137,  138,  139,
-      141,  142,  143
+      116,  117,  118,  120,  122,  123,  124,  125,  131,  133,
+      134,  135,  136,  137,  138,  139,  140,  141,  142,  143,
+      145,  146,  147
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -1299,7 +1299,7 @@ YY_RULE_SETUP
 case 15:
 YY_RULE_SETUP
 #line 90 "scanner.l"
-{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return T_Inc; }
+{ yylloc.last_column += yyleng;  return T_Inc; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
@@ -1354,12 +1354,12 @@ YY_RULE_SETUP
 case 26:
 YY_RULE_SETUP
 #line 101 "scanner.l"
-{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return '%';}
+{ yylloc.last_column += yyleng;  return '%';}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 102 "scanner.l"
-{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return '<';}
+{ yylloc.last_column += yyleng;  return '<';}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
@@ -1449,75 +1449,79 @@ case 47:
 case 48:
 YY_RULE_SETUP
 #line 125 "scanner.l"
-{ yylloc.last_column += yyleng; yylval.floatConstant = strtod(yytext, NULL); return T_FloatConstant; }
+{ 
+						yylloc.last_column += yyleng; 
+						yylval.floatConstant = strtod(yytext, NULL); 
+						return T_FloatConstant; 
+					}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 127 "scanner.l"
+#line 131 "scanner.l"
 { yylloc.last_column += yyleng; yylval.integerConstant = strtod(yytext, NULL); return T_IntConstant; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 129 "scanner.l"
+#line 133 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Do; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 130 "scanner.l"
+#line 134 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Switch; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 131 "scanner.l"
+#line 135 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Case; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 132 "scanner.l"
+#line 136 "scanner.l"
 { yylloc.last_column += yyleng;  return T_In; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 133 "scanner.l"
+#line 137 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Out;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 134 "scanner.l"
+#line 138 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Default; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 135 "scanner.l"
+#line 139 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Struct; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 136 "scanner.l"
+#line 140 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Uint; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 137 "scanner.l"
+#line 141 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Uniform; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 138 "scanner.l"
+#line 142 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Const;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 139 "scanner.l"
+#line 143 "scanner.l"
 { yylloc.last_column += yyleng;  return T_Continue;}
 	YY_BREAK
 case 61:
-#line 142 "scanner.l"
+#line 146 "scanner.l"
 case 62:
-#line 143 "scanner.l"
+#line 147 "scanner.l"
 case 63:
 YY_RULE_SETUP
-#line 143 "scanner.l"
+#line 147 "scanner.l"
 { 
 									if(yyleng > 1023) {
 										ReportError::LongIdentifier(&yylloc, yytext);
@@ -1531,10 +1535,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 154 "scanner.l"
+#line 158 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 1538 "lex.yy.c"
+#line 1542 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2669,7 +2673,7 @@ void yyfree (void * ptr )
 
 /* %ok-for-header */
 
-#line 154 "scanner.l"
+#line 158 "scanner.l"
 
 
 /* The closing %% above marks the end of the Rules section and the beginning
