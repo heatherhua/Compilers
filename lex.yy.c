@@ -1228,18 +1228,18 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 76 "scanner.l"
-{ }
+{ yylloc.last_column++; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 77 "scanner.l"
-{ yylloc.first_column = yylloc.last_column + 8; yylloc.last_column += 8; }
+{ yylloc.last_column += 8;}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
 #line 78 "scanner.l"
-{ yylloc.first_line++; yylloc.first_column = 1; yylloc.last_column = 1;}
+{ yylloc.first_line++; yylloc.first_column = 0; yylloc.last_column = 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
@@ -1249,27 +1249,27 @@ YY_RULE_SETUP
 case 5:
 YY_RULE_SETUP
 #line 80 "scanner.l"
-{ return T_Void; }
+{ yylloc.last_column += yyleng;  return T_Void; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 81 "scanner.l"
-{ return T_Int; }
+{ yylloc.last_column += yyleng;  return T_Int; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 82 "scanner.l"
-{ return T_Float; }
+{ yylloc.last_column += yyleng;  return T_Float; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 83 "scanner.l"
-{ return T_Bool; }
+{ yylloc.last_column += yyleng;  return T_Bool; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 84 "scanner.l"
-{ return T_String; }
+{ yylloc.last_column += yyleng;  return T_String; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
@@ -1279,117 +1279,117 @@ YY_RULE_SETUP
 case 11:
 YY_RULE_SETUP
 #line 86 "scanner.l"
-{ return T_LessEqual; }
+{ yylloc.last_column += yyleng;  return T_LessEqual; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 87 "scanner.l"
-{ return T_GreaterEqual; }
+{ yylloc.last_column += yyleng;  return T_GreaterEqual; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 88 "scanner.l"
-{ return '='; }
+{ yylloc.last_column += yyleng;  return '='; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 89 "scanner.l"
-{ return T_NotEqual; }
+{ yylloc.last_column += yyleng;  return T_NotEqual; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 90 "scanner.l"
-{ return T_Inc; }
+{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return T_Inc; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 91 "scanner.l"
-{ return T_Dec; }
+{ yylloc.last_column += yyleng;  return T_Dec; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 92 "scanner.l"
-{ return ';';}
+{ yylloc.last_column += yyleng;  return ';';}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 93 "scanner.l"
-{ return '+';}
+{ yylloc.last_column += yyleng;  return '+';}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 94 "scanner.l"
-{ return '-';}
+{ yylloc.last_column += yyleng;  return '-';}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 95 "scanner.l"
-{ return '('; }
+{ yylloc.last_column += yyleng;  return '('; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 96 "scanner.l"
-{ return ')';}
+{ yylloc.last_column += yyleng;  return ')';}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 97 "scanner.l"
-{ return ']';}
+{ yylloc.last_column += yyleng;  return ']';}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 98 "scanner.l"
-{ return '[';}
+{ yylloc.last_column += yyleng;  return '[';}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 99 "scanner.l"
-{ return '*';}
+{ yylloc.last_column += yyleng;  return '*';}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 100 "scanner.l"
-{ return '/';}
+{ yylloc.last_column += yyleng;  return '/';}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 101 "scanner.l"
-{ return '%';}
+{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return '%';}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 102 "scanner.l"
-{ return '<';}
+{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return '<';}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 103 "scanner.l"
-{ return '>';}
+{ yylloc.last_column += yyleng;  return '>';}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 104 "scanner.l"
-{ return '!';}
+{ yylloc.last_column += yyleng;  return '!';}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 105 "scanner.l"
-{ return '.';}
+{ yylloc.last_column += yyleng;  return '.';}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 106 "scanner.l"
-{ return ',';}
+{ yylloc.last_column += yyleng;  return ',';}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 107 "scanner.l"
-{ return '{';}
+{ yylloc.last_column += yyleng;  return '{';}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 108 "scanner.l"
-{ return '}';}
+{ yylloc.last_column += yyleng;  return '}';}
 	YY_BREAK
 case 34:
 #line 110 "scanner.l"
@@ -1398,42 +1398,42 @@ case 35:
 case 36:
 YY_RULE_SETUP
 #line 111 "scanner.l"
-{ return T_While; }
+{ yylloc.last_column += yyleng;  return T_While; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 112 "scanner.l"
-{ return T_For; }
+{ yylloc.last_column += yyleng;  return T_For; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
 #line 113 "scanner.l"
-{ return T_If; }
+{ yylloc.last_column += yyleng;  return T_If; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 114 "scanner.l"
-{ return T_Else; }
+{ yylloc.last_column += yyleng;  return T_Else; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 115 "scanner.l"
-{ return T_Return; }
+{ yylloc.last_column += yyleng;  return T_Return; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
 #line 116 "scanner.l"
-{ return T_Break; }
+{ yylloc.last_column += yyleng; return T_Break; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
 #line 117 "scanner.l"
-{ yylloc.last_column = yylloc.first_column + yyleng - 1; yylval.boolConstant = true; return T_BoolConstant;}
+{ yylloc.last_column += yyleng; yylval.boolConstant = true; return T_BoolConstant;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
 #line 118 "scanner.l"
-{ yylloc.last_column = yylloc.first_column + yyleng - 1; yylval.boolConstant = false; return T_BoolConstant;}
+{ yylloc.last_column += yyleng; yylval.boolConstant = false; return T_BoolConstant;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
@@ -1449,67 +1449,67 @@ case 47:
 case 48:
 YY_RULE_SETUP
 #line 125 "scanner.l"
-{ yylval.floatConstant = strtod(yytext, NULL); return T_FloatConstant; }
+{ yylloc.last_column += yyleng; yylval.floatConstant = strtod(yytext, NULL); return T_FloatConstant; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
 #line 127 "scanner.l"
-{ yylval.integerConstant = strtod(yytext, NULL); return T_IntConstant; }
+{ yylloc.last_column += yyleng; yylval.integerConstant = strtod(yytext, NULL); return T_IntConstant; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
 #line 129 "scanner.l"
-{ return T_Do; }
+{ yylloc.last_column += yyleng;  return T_Do; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
 #line 130 "scanner.l"
-{ return T_Switch; }
+{ yylloc.last_column += yyleng;  return T_Switch; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
 #line 131 "scanner.l"
-{ return T_Case; }
+{ yylloc.last_column += yyleng;  return T_Case; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
 #line 132 "scanner.l"
-{ return T_In; }
+{ yylloc.last_column += yyleng;  return T_In; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
 #line 133 "scanner.l"
-{ return T_Out;}
+{ yylloc.last_column += yyleng;  return T_Out;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
 #line 134 "scanner.l"
-{ return T_Default; }
+{ yylloc.last_column += yyleng;  return T_Default; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
 #line 135 "scanner.l"
-{ return T_Struct; }
+{ yylloc.last_column += yyleng;  return T_Struct; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
 #line 136 "scanner.l"
-{ return T_Uint; }
+{ yylloc.last_column += yyleng;  return T_Uint; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
 #line 137 "scanner.l"
-{ return T_Uniform; }
+{ yylloc.last_column += yyleng;  return T_Uniform; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
 #line 138 "scanner.l"
-{ return T_Const;}
+{ yylloc.last_column += yyleng;  return T_Const;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
 #line 139 "scanner.l"
-{ return T_Continue;}
+{ yylloc.last_column += yyleng;  return T_Continue;}
 	YY_BREAK
 case 61:
 #line 142 "scanner.l"
@@ -1522,8 +1522,8 @@ YY_RULE_SETUP
 									if(yyleng > 1023) {
 										ReportError::LongIdentifier(&yylloc, yytext);
 									} else {
-										yylloc.first_column++;
-										yylloc.last_column = yylloc.first_column + yyleng - 1;
+										
+										yylloc.last_column += yyleng;
 										strncpy(yylval.identifier, yytext, MaxIdentLen); yylval.identifier[MaxIdentLen] = '\0'; 
 										return T_Identifier;
 									}
@@ -2697,9 +2697,7 @@ void InitScanner()
     yy_flex_debug = false;
 
     yylloc.first_line = 1;
-    // yylloc.first_column = 1;
-    // yylloc.last_column = 1;
-    // yylloc.last_column = 1;
+    // yylloc.last_column = 0;
 }
 
 
@@ -2710,7 +2708,8 @@ void InitScanner()
  */
 static void DoBeforeEachAction()
 {
-		// yylloc.last_column = yylloc.first_column + yyleng - 1;
+	yylloc.first_column = yylloc.last_column + 1;
+	// yylloc.last_column += yyleng;
 	
 }
 

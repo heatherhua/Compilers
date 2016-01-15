@@ -73,70 +73,70 @@ static void DoBeforeEachAction();
   * %% markers which delimit the Rules section. 
   */  
 
-[ ]			{ }
-[\t]		{ yylloc.first_column = yylloc.last_column + 8; yylloc.last_column += 8; }
-[\n] 		{ yylloc.first_line++; yylloc.first_column = 1; yylloc.last_column = 1;}
+[ ]			{ yylloc.last_column++; }
+[\t]		{ yylloc.last_column += 8;}
+[\n] 		{ yylloc.first_line++; yylloc.first_column = 0; yylloc.last_column = 0;}
 [\r] 		{ }
-"void"		{ return T_Void; }
-"int"		{ return T_Int; }
-"float"		{ return T_Float; }
-"bool"		{ return T_Bool; }
-"string"	{ return T_String; }
+"void"		{ yylloc.last_column += yyleng;  return T_Void; }
+"int"		{ yylloc.last_column += yyleng;  return T_Int; }
+"float"		{ yylloc.last_column += yyleng;  return T_Float; }
+"bool"		{ yylloc.last_column += yyleng;  return T_Bool; }
+"string"	{ yylloc.last_column += yyleng;  return T_String; }
 "\[\]"		{ return T_Dims; }
-"<="		{ return T_LessEqual; }
-">="		{ return T_GreaterEqual; }
-"="			{ return '='; }
-"!="		{ return T_NotEqual; }
-"++"		{ return T_Inc; }
-"--"		{ return T_Dec; }
-";"			{ return ';';}
-"+"			{ return '+';}
-"-"			{ return '-';}
-"("			{ return '('; }
-")"			{ return ')';}
-"]"			{ return ']';}
-"["			{ return '[';}
-"*"			{ return '*';}
-"/"			{ return '/';}
-"%"			{ return '%';}
-"<"			{ return '<';}
-">"			{ return '>';}
-"!"			{ return '!';}
-"."			{ return '.';}
-","			{ return ',';}
-"{"			{ return '{';}
-"}"			{ return '}';}
-"and" | "&&"{ return T_And; }
-"or" | "||"	{ return T_Or; }
-"while"		{ return T_While; }
-"for"		{ return T_For; }
-"if"		{ return T_If; }
-"else" 		{ return T_Else; }
-"return"	{ return T_Return; }
-"break"		{ return T_Break; }
-"true" 		{ yylloc.last_column = yylloc.first_column + yyleng - 1; yylval.boolConstant = true; return T_BoolConstant;}
-"false"		{ yylloc.last_column = yylloc.first_column + yyleng - 1; yylval.boolConstant = false; return T_BoolConstant;}
+"<="		{ yylloc.last_column += yyleng;  return T_LessEqual; }
+">="		{ yylloc.last_column += yyleng;  return T_GreaterEqual; }
+"="			{ yylloc.last_column += yyleng;  return '='; }
+"!="		{ yylloc.last_column += yyleng;  return T_NotEqual; }
+"++"		{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return T_Inc; }
+"--"		{ yylloc.last_column += yyleng;  return T_Dec; }
+";"			{ yylloc.last_column += yyleng;  return ';';}
+"+"			{ yylloc.last_column += yyleng;  return '+';}
+"-"			{ yylloc.last_column += yyleng;  return '-';}
+"("			{ yylloc.last_column += yyleng;  return '('; }
+")"			{ yylloc.last_column += yyleng;  return ')';}
+"]"			{ yylloc.last_column += yyleng;  return ']';}
+"["			{ yylloc.last_column += yyleng;  return '[';}
+"*"			{ yylloc.last_column += yyleng;  return '*';}
+"/"			{ yylloc.last_column += yyleng;  return '/';}
+"%"			{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return '%';}
+"<"			{ yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  yylloc.last_column += yyleng;  return '<';}
+">"			{ yylloc.last_column += yyleng;  return '>';}
+"!"			{ yylloc.last_column += yyleng;  return '!';}
+"."			{ yylloc.last_column += yyleng;  return '.';}
+","			{ yylloc.last_column += yyleng;  return ',';}
+"{"			{ yylloc.last_column += yyleng;  return '{';}
+"}"			{ yylloc.last_column += yyleng;  return '}';}
+"and" | "&&"{ yylloc.last_column += yyleng;  return T_And; }
+"or" | "||"	{ yylloc.last_column += yyleng;  return T_Or; }
+"while"		{ yylloc.last_column += yyleng;  return T_While; }
+"for"		{ yylloc.last_column += yyleng;  return T_For; }
+"if"		{ yylloc.last_column += yyleng;  return T_If; }
+"else" 		{ yylloc.last_column += yyleng;  return T_Else; }
+"return"	{ yylloc.last_column += yyleng;  return T_Return; }
+"break"		{ yylloc.last_column += yyleng; return T_Break; }
+"true" 		{ yylloc.last_column += yyleng; yylval.boolConstant = true; return T_BoolConstant;}
+"false"		{ yylloc.last_column += yyleng; yylval.boolConstant = false; return T_BoolConstant;}
 
 "\"*\""		{ return T_StringConstant; }
 
 ((-?)[0-9][0-9]*f) |
 ((-?)[0-9][0-9]*\.[0-9]*f) |
 ((-?)[0-9]*\.[0-9][0-9]*(f?)) |	
-((-?)[0-9][0-9]*\.)	{ yylval.floatConstant = strtod(yytext, NULL); return T_FloatConstant; }
+((-?)[0-9][0-9]*\.)	{ yylloc.last_column += yyleng; yylval.floatConstant = strtod(yytext, NULL); return T_FloatConstant; }
 
--?([0-9]{1,9}|1[0-9]{9}|2(0[0-9]{8}|1([0-3][0-9]{7}|4([0-6][0-9]{6}|7([0-3][0-9]{5}|4([0-7][0-9]{4}|8([0-2][0-9]{3}|3([0-5][0-9]{2}|6([0-3][0-9]|4[0-7])))))))))|^-2147483648 { yylval.integerConstant = strtod(yytext, NULL); return T_IntConstant; }
+-?([0-9]{1,9}|1[0-9]{9}|2(0[0-9]{8}|1([0-3][0-9]{7}|4([0-6][0-9]{6}|7([0-3][0-9]{5}|4([0-7][0-9]{4}|8([0-2][0-9]{3}|3([0-5][0-9]{2}|6([0-3][0-9]|4[0-7])))))))))|^-2147483648 { yylloc.last_column += yyleng; yylval.integerConstant = strtod(yytext, NULL); return T_IntConstant; }
 
-"do"		{ return T_Do; }
-"switch"	{ return T_Switch; }
-"case"		{ return T_Case; }
-"in"		{ return T_In; }
-"out"		{ return T_Out;}
-"default"	{ return T_Default; }
-"struct"	{ return T_Struct; }
-"uint"		{ return T_Uint; }
-"uniform"	{ return T_Uniform; }
-"const"		{ return T_Const;}
-"continue"	{ return T_Continue;}
+"do"		{ yylloc.last_column += yyleng;  return T_Do; }
+"switch"	{ yylloc.last_column += yyleng;  return T_Switch; }
+"case"		{ yylloc.last_column += yyleng;  return T_Case; }
+"in"		{ yylloc.last_column += yyleng;  return T_In; }
+"out"		{ yylloc.last_column += yyleng;  return T_Out;}
+"default"	{ yylloc.last_column += yyleng;  return T_Default; }
+"struct"	{ yylloc.last_column += yyleng;  return T_Struct; }
+"uint"		{ yylloc.last_column += yyleng;  return T_Uint; }
+"uniform"	{ yylloc.last_column += yyleng;  return T_Uniform; }
+"const"		{ yylloc.last_column += yyleng;  return T_Const;}
+"continue"	{ yylloc.last_column += yyleng;  return T_Continue;}
 
 [_a-zA-Z][a-zA-Z0-9]* |
 [_][a-zA-Z0-9][_a-zA-Z0-9]* |
@@ -144,8 +144,8 @@ static void DoBeforeEachAction();
 									if(yyleng > 1023) {
 										ReportError::LongIdentifier(&yylloc, yytext);
 									} else {
-										yylloc.first_column++;
-										yylloc.last_column = yylloc.first_column + yyleng - 1;
+										
+										yylloc.last_column += yyleng;
 										strncpy(yylval.identifier, yytext, MaxIdentLen); yylval.identifier[MaxIdentLen] = '\0'; 
 										return T_Identifier;
 									}
@@ -177,9 +177,7 @@ void InitScanner()
     yy_flex_debug = false;
 
     yylloc.first_line = 1;
-    // yylloc.first_column = 1;
-    // yylloc.last_column = 1;
-    // yylloc.last_column = 1;
+    // yylloc.last_column = 0;
 }
 
 
@@ -190,6 +188,7 @@ void InitScanner()
  */
 static void DoBeforeEachAction()
 {
-		// yylloc.last_column = yylloc.first_column + yyleng - 1;
+	yylloc.first_column = yylloc.last_column + 1;
+	// yylloc.last_column += yyleng;
 	
 }
