@@ -46,7 +46,6 @@ struct yyltype yylloc; // manually dclared for pp1, later Yacc provides
 static void DoBeforeEachAction(); 
 #define YY_USER_ACTION DoBeforeEachAction();
 
-
 %}
 
  /* The section before the first %% is the Definitions section of the lex
@@ -67,11 +66,20 @@ static void DoBeforeEachAction();
 "NULL"		{ return T_Null; }
 
 */
-
+%x comment
 %%             /* BEGIN RULES SECTION */
+
+"/*"         BEGIN(comment);
+
+<comment>[^*\n]*        /* eat anything that's not a '*' */
+<comment>"*"+[^*/\n]*   /* eat up '*'s not followed by '/'s */
+<comment>\n             ++yylloc.first_line;
+<comment>"*"+"/"        BEGIN(INITIAL);
  /* All patterns and actions should be placed between the start and stop
   * %% markers which delimit the Rules section. 
   */  
+
+
 
 [ ]			{ yylloc.last_column++; }
 [\t]		{ yylloc.last_column += 8;}
@@ -116,6 +124,7 @@ static void DoBeforeEachAction();
 "break"		{ yylloc.last_column += yyleng; return T_Break; }
 "true" 		{ yylloc.last_column += yyleng; yylval.boolConstant = true; return T_BoolConstant;}
 "false"		{ yylloc.last_column += yyleng; yylval.boolConstant = false; return T_BoolConstant;}
+
 
 "\"*\""		{ return T_StringConstant; }
 
