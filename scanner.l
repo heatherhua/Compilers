@@ -81,7 +81,7 @@ static void DoBeforeEachAction();
 
 
 
-[ ]			{ yylloc.last_column++; }
+[ ]		{ yylloc.last_column++; }
 [\t]		{ yylloc.last_column += 8;}
 [\n] 		{ yylloc.first_line++; yylloc.first_column = 0; yylloc.last_column = 0;}
 [\r] 		{ }
@@ -90,39 +90,40 @@ static void DoBeforeEachAction();
 "float"		{ yylloc.last_column += yyleng;  return T_Float; }
 "bool"		{ yylloc.last_column += yyleng;  return T_Bool; }
 "string"	{ yylloc.last_column += yyleng;  return T_String; }
-"\[\]"		{ return T_Dims; }
+"\[\]"		{ yylloc.last_column += yyleng;  return T_Dims; }
 "<="		{ yylloc.last_column += yyleng;  return T_LessEqual; }
 ">="		{ yylloc.last_column += yyleng;  return T_GreaterEqual; }
-"="			{ yylloc.last_column += yyleng;  return '='; }
+"=="		{ yylloc.last_column += yyleng;  return T_Equal; }
 "!="		{ yylloc.last_column += yyleng;  return T_NotEqual; }
 "++"		{ yylloc.last_column += yyleng;  return T_Inc; }
 "--"		{ yylloc.last_column += yyleng;  return T_Dec; }
-";"			{ yylloc.last_column += yyleng;  return ';';}
-"+"			{ yylloc.last_column += yyleng;  return '+';}
-"-"			{ yylloc.last_column += yyleng;  return '-';}
-"("			{ yylloc.last_column += yyleng;  return '('; }
-")"			{ yylloc.last_column += yyleng;  return ')';}
-"]"			{ yylloc.last_column += yyleng;  return ']';}
-"["			{ yylloc.last_column += yyleng;  return '[';}
-"*"			{ yylloc.last_column += yyleng;  return '*';}
-"/"			{ yylloc.last_column += yyleng;  return '/';}
-"%"			{ yylloc.last_column += yyleng;  return '%';}
-"<"			{ yylloc.last_column += yyleng;  return '<';}
-">"			{ yylloc.last_column += yyleng;  return '>';}
-"!"			{ yylloc.last_column += yyleng;  return '!';}
-"."			{ yylloc.last_column += yyleng;  return '.';}
-","			{ yylloc.last_column += yyleng;  return ',';}
-"{"			{ yylloc.last_column += yyleng;  return '{';}
-"}"			{ yylloc.last_column += yyleng;  return '}';}
-"and" | "&&"{ yylloc.last_column += yyleng;  return T_And; }
-"or" | "||"	{ yylloc.last_column += yyleng;  return T_Or; }
+"="             { yylloc.last_column += yyleng;  return '=';}
+";"		{ yylloc.last_column += yyleng;  return ';';}
+"+"		{ yylloc.last_column += yyleng;  return '+';}
+"-"		{ yylloc.last_column += yyleng;  return '-';}
+"("		{ yylloc.last_column += yyleng;  return '('; }
+")"		{ yylloc.last_column += yyleng;  return ')';}
+"]"		{ yylloc.last_column += yyleng;  return ']';}
+"["		{ yylloc.last_column += yyleng;  return '[';}
+"*"		{ yylloc.last_column += yyleng;  return '*';}
+"/"		{ yylloc.last_column += yyleng;  return '/';}
+"%"		{ yylloc.last_column += yyleng;  return '%';}
+"<"		{ yylloc.last_column += yyleng;  return '<';}
+">"		{ yylloc.last_column += yyleng;  return '>';}
+"!"		{ yylloc.last_column += yyleng;  return '!';}
+"."		{ yylloc.last_column += yyleng;  return '.';}
+","		{ yylloc.last_column += yyleng;  return ',';}
+"{"		{ yylloc.last_column += yyleng;  return '{';}
+"}"		{ yylloc.last_column += yyleng;  return '}';}
+"&&"		{ yylloc.last_column += yyleng;  return T_And; }
+"||"		{ yylloc.last_column += yyleng;  return T_Or; }
 "while"		{ yylloc.last_column += yyleng;  return T_While; }
 "for"		{ yylloc.last_column += yyleng;  return T_For; }
 "if"		{ yylloc.last_column += yyleng;  return T_If; }
-"else" 		{ yylloc.last_column += yyleng;  return T_Else; }
+"else"		{ yylloc.last_column += yyleng;  return T_Else; }
 "return"	{ yylloc.last_column += yyleng;  return T_Return; }
 "break"		{ yylloc.last_column += yyleng; return T_Break; }
-"true" 		{ yylloc.last_column += yyleng; yylval.boolConstant = true; return T_BoolConstant;}
+"true"		{ yylloc.last_column += yyleng; yylval.boolConstant = true; return T_BoolConstant;}
 "false"		{ yylloc.last_column += yyleng; yylval.boolConstant = false; return T_BoolConstant;}
 
 
@@ -144,12 +145,29 @@ static void DoBeforeEachAction();
 "case"		{ yylloc.last_column += yyleng;  return T_Case; }
 "in"		{ yylloc.last_column += yyleng;  return T_In; }
 "out"		{ yylloc.last_column += yyleng;  return T_Out;}
+"inout"         { yylloc.last_column += yyleng;  return T_Inout;}
 "default"	{ yylloc.last_column += yyleng;  return T_Default; }
 "struct"	{ yylloc.last_column += yyleng;  return T_Struct; }
 "uint"		{ yylloc.last_column += yyleng;  return T_Uint; }
 "uniform"	{ yylloc.last_column += yyleng;  return T_Uniform; }
 "const"		{ yylloc.last_column += yyleng;  return T_Const;}
 "continue"	{ yylloc.last_column += yyleng;  return T_Continue;}
+"layout"        { yylloc.last_column += yyleng;  return T_Layout; }
+"vec2"	{ yylloc.last_column += yyleng;  return T_Vec2;}
+"vec3"	{ yylloc.last_column += yyleng;  return T_Vec3;}
+"vec4"	{ yylloc.last_column += yyleng;  return T_Vec4;}
+"mat2"	{ yylloc.last_column += yyleng;  return T_Mat2;}
+"mat3"	{ yylloc.last_column += yyleng;  return T_Mat3;}
+"mat4"	{ yylloc.last_column += yyleng;  return T_Mat4;}
+"ivec2"	{ yylloc.last_column += yyleng;  return T_Ivec2;}
+"ivec3"	{ yylloc.last_column += yyleng;  return T_Ivec3;}
+"ivec4"	{ yylloc.last_column += yyleng;  return T_Ivec4;}
+"bvec2"	{ yylloc.last_column += yyleng;  return T_Bvec2;}
+"bvec3"	{ yylloc.last_column += yyleng;  return T_Bvec3;}
+"bvec4"	{ yylloc.last_column += yyleng;  return T_Bvec4;}
+"uvec2"	{ yylloc.last_column += yyleng;  return T_Uvec2;}
+"uvec3"	{ yylloc.last_column += yyleng;  return T_Uvec3;}
+"uvec4"	{ yylloc.last_column += yyleng;  return T_Uvec4;}
 
 [_a-zA-Z][a-zA-Z0-9]* |
 [_][a-zA-Z0-9][_a-zA-Z0-9]* |
@@ -190,7 +208,6 @@ void InitScanner()
     yy_flex_debug = false;
 
     yylloc.first_line = 1;
-    // yylloc.last_column = 0;
 }
 
 
@@ -201,7 +218,5 @@ void InitScanner()
  */
 static void DoBeforeEachAction()
 {
-	yylloc.first_column = yylloc.last_column + 1;
-	// yylloc.last_column += yyleng;
-	
+	yylloc.first_column = yylloc.last_column + 1;	
 }

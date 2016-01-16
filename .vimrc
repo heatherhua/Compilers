@@ -1,3 +1,0 @@
-set nu
-colorscheme desert
-
